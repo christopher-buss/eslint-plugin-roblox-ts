@@ -14,9 +14,9 @@ export type RobloxTsRule = ReturnType<typeof makeRule>;
 
 type ExtractStringMembers<T> = Extract<T[keyof T], string>;
 
-export const robloxTSSettings = (o: {
-	[K in ExtractStringMembers<typeof import("../rules")>]: "error" | "warn" | "off";
-}) => {
+export const robloxTSSettings = (
+	o: Record<ExtractStringMembers<typeof import("../rules")>, "error" | "warn" | "off">,
+) => {
 	const settings: Record<string, "error" | "warn" | "off"> = {};
 
 	for (const [name, setting] of Object.entries(o)) {

@@ -19,6 +19,7 @@ Make sure the following settings are in your settings file (`Ctrl + ,` to open t
 
 These are according to my preferences, so feel free to change this according to your own desires:
 ```json
+	// Enable the ESlint flat config support
     "eslint.useFlatConfig": true,
 	"files.trimTrailingWhitespace": true,
 	"files.insertFinalNewline": true,
@@ -41,9 +42,10 @@ These are according to my preferences, so feel free to change this according to 
 ```
 
 ## Step 3: Setup the eslint config file
-Make a file named `eslint.config.mjs` and place this in the contents.
+Make a file named `eslint.config.ts` and place this in the contents. You must
+install `jiti` to use .ts files as eslint configs. 
 
-```mjs
+```ts
 {
 import eslint from "@eslint/js";
 import tseslint from "typescript-eslint";
@@ -86,12 +88,11 @@ export default tseslint.config(
 	{
 		languageOptions: {
 			parserOptions: {
-				projectService: {
-					allowDefaultProject: ["*.mjs"],
-				},
 				ecmaVersion: 2018,
+				jsx: true,
+				project: "./tsconfig.eslint.json",
 				sourceType: "module",
-				tsconfigRootDir: "./tsconfig.json",
+				useJSXTextNode: true,
 			},
 		},
 	},
@@ -103,7 +104,7 @@ export default tseslint.config(
 
 Run the following command:
 
-`npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint eslint-plugin-prettier eslint-plugin-roblox-ts`
+`npm install --save-dev eslint @eslint/js @types/eslint__js typescript typescript-eslint eslint-plugin-prettier eslint-plugin-roblox-ts jiti`
 
 ## Step 5: Reload window
 Type `Ctrl+Shift+P` and select `Developer: Reload Window`. 

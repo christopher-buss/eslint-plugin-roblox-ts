@@ -8,7 +8,6 @@ export default tseslint.config(
 	...tseslint.configs.recommended,
 	...tseslint.configs.strict,
 	...tseslint.configs.stylistic,
-	// @ts-expect-error - eslint-plugin-prettier/recommended uses incorrect FlatConfig type
 	eslintPluginPrettierRecommended,
 	{
 		rules: {
@@ -36,12 +35,9 @@ export default tseslint.config(
 	{
 		languageOptions: {
 			parserOptions: {
-				projectService: {
-					allowDefaultProject: ["*.mjs"],
-				},
+				project: "./tsconfig.eslint.json",
 				ecmaVersion: 2018,
 				sourceType: "module",
-				tsconfigRootDir: "./tsconfig.json",
 			},
 		},
 	},

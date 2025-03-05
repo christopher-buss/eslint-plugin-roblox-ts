@@ -8,5 +8,6 @@
 		"strict": true,
 		"esModuleInterop": true,
 		"declaration": true,
-	}
+	},
+	"exclude": ["./eslint.config.ts", "out/**/*"],
 }
